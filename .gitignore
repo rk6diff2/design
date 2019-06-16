@@ -1,0 +1,9 @@
+.idea
+cmake-build-debug
+*.log
+*.out
+*.swp
+*.swo
+*.log
+*.plan
+
