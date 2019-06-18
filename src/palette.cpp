@@ -13,7 +13,7 @@
 
 namespace palette {
   RGBPalette getPalette(const cv::Mat3b &src) {
-    RGBPalette palette;
+    RGBPalette palette{};
     for (int r = 0; r < src.rows; ++r) {
       for (int c = 0; c < src.cols; ++c) {
         cv::Vec3b color = src(r, c);
@@ -34,7 +34,7 @@ namespace palette {
       throw PaletteException("No image data");
     }
 
-    cv::Mat3b src;
+    cv::Mat3b src{};
     reduceColor_kmeans(img, src);
     auto palette = getPalette(src);
     int area = img.rows * img.cols;
@@ -46,7 +46,7 @@ namespace palette {
 
 
   unsigned long RGBToHex(const std::string &base) {
-    std::vector<std::string> split;
+    std::vector<std::string> split{};
     boost::split(split, base, boost::is_any_of("."));
     unsigned int arr[3]{};
     uint8_t i = 0;
@@ -66,8 +66,8 @@ namespace palette {
     cv::Mat data = src.reshape(1, n);
     data.convertTo(data, CV_32F);
 
-    cv::Mat labels;
-    cv::Mat1f colors;
+    cv::Mat labels{};
+    cv::Mat1f colors{};
     kmeans(data, K, labels, cv::TermCriteria(), 1, cv::KMEANS_PP_CENTERS, colors);
 
     for (int i = 0; i < n; ++i) {
@@ -80,7 +80,7 @@ namespace palette {
     reduced.convertTo(dst, CV_8U);
   }
 
-  void sort(std::vector<std::pair<unsigned,unsigned> > &sort_vec) {
+  void sort(std::vector<std::pair<unsigned,unsigned>> &sort_vec) {
     std::sort(sort_vec.begin(), sort_vec.end(), work::getBest);
   }
 }  // namespace: palette

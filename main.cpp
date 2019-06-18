@@ -1,19 +1,21 @@
 //
 // Created by starman on 18.06.19.
 //
+
 #include <iostream>
 #include <iomanip>
 #include "include/palette.h"
 #include "include/utils.h"
 
 int main(int argc, char** argv) {
-  int64 area = 0;
   std::string path_to_files{};
-  palette::HexPalette colors{};
   palette::status status = palette::paletteType(path_to_files, argc, argv);
   if (status < 0) {
     return status;
   }
+  palette::HexPalette colors{};
+  int64 area = 0;
+
   if (status == palette::status::IS_DIR) {
     for (const auto& entry : fs::directory_iterator(path_to_files)) {
       std::cout << entry.path() << std::endl;
@@ -32,6 +34,7 @@ int main(int argc, char** argv) {
       return palette::status::NOT_FOUND;
     }
   }
+
   std::vector<palette::Color> sort_palette(colors.begin(), colors.end());
   palette::sort(sort_palette);
   for (const auto& color : sort_palette) {
