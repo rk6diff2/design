@@ -2,12 +2,14 @@
 // Created by starman on 17.06.19.
 //
 
-#include "include/palette.h"
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <iostream>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include "include/palette.h"
+#include "include/errors.h"
+#include "include/work.h"
 
 namespace palette {
   RGBPalette getPalette(const cv::Mat3b &src) {
@@ -29,7 +31,7 @@ namespace palette {
     cv::Mat3d img = imread(file.string(), cv::IMREAD_COLOR); // Read the file
     if (!img.data) {
       std::cout << "No image data: " << file << std::endl;
-      return -1;
+      throw PaletteException("No image data");
     }
 
     cv::Mat3b src;
@@ -78,13 +80,7 @@ namespace palette {
     reduced.convertTo(dst, CV_8U);
   }
 
-  bool work::getBest(const palette::Color &first,
-                     const palette::Color &second) {
-    return first.second < second.second;
-  }
-
-  void sort(std::vector<std::pair<unsigned int, unsigned int>> &sort_vec) {
+  void sort(std::vector<std::pair<unsigned,unsigned> > &sort_vec) {
     std::sort(sort_vec.begin(), sort_vec.end(), work::getBest);
   }
-
 }  // namespace: palette
