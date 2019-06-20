@@ -18,6 +18,9 @@ namespace palette {
     IS_FILE,
   };
 
+  /**
+   * Custom exception
+   */
   class PaletteException : public std::exception {
    public:
     explicit PaletteException(char const *_params, int _type = 0) throw()

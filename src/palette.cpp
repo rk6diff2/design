@@ -87,10 +87,14 @@ namespace palette {
 
   status paletteType(Param &param, int argc, char **argv) {
     param = {"", DEFAULT_K};
-    int opt = 0;
-    int k_ind = 0;
     status stat = status::OK;
-    opt = getopt(argc, argv, OPT_KEYS);
+
+    if (argc < 2) {
+      stat = status::ERROR;
+    }
+
+    int k_ind = 0;
+    int opt = getopt(argc, argv, OPT_KEYS);
     while (opt != -1 && stat != status::ERROR) {
       switch (opt) {
       case 'd': {
