@@ -10,7 +10,7 @@ namespace palette {
   namespace work {
     bool getBest(const Color &first, const Color &second);
     void usageDetails();
-  }  // namespace work
-}  // namespace palette
+  } // namespace work
+} // namespace palette
 
-#endif //PALETTE_WORK_H
+#endif // PALETTE_WORK_H

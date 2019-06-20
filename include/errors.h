@@ -1,12 +1,12 @@
-#include <exception>
-#include <utility>
-
 //
 // Created by starman on 16.06.19.
 //
 
 #ifndef DESIGN_ERRORS_H
 #define DESIGN_ERRORS_H
+
+#include <exception>
+#include <utility>
 
 namespace palette {
   enum status {
@@ -29,6 +29,6 @@ namespace palette {
     const char *params_;
     int type_{};
   };
-}
+} // namespace palette
 
-#endif //DESIGN_ERRORS_H
+#endif // DESIGN_ERRORS_H

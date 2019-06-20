@@ -7,8 +7,10 @@
 namespace palette {
   const char *PaletteException::what() const throw() {
     switch (type_) {
-      case 1: return params_;
-      default: return "Error";
+    case 1:
+      return params_;
+    default:
+      return "Error";
     }
   }
-} // namespace: palette
+} // namespace palette
