@@ -63,8 +63,8 @@ namespace palette {
   /**
    * Get the palette type the user needs
    * @param {Param} path - empty parameters will be initialize
-   * @param argc - main arg count
-   * @param argv - main arg vector
+   * @param {int} argc - main arg count
+   * @param {char**} argv - main arg vector
    * @return {enum} stat - launch status
    */
   status paletteType(Param &path, int argc, char **argv);
